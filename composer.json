@@ -1,0 +1,18 @@
+{
+	"name": "jorgecasas/mogilefs-php",
+	"description": "A simple MogileFS PHP client",
+	"keywords": ["filesystems", "mogilefs", "php"],
+    "homepage": "https://github.com/jorgecasas/mogilefs-php",
+	"license": "GPLv3",
+	"authors": [
+        {
+            "name": "ITERNOVA",
+            "email": "soportetecnico@iternova.net",
+            "homepage": "http://www.iternova.net",
+            "role": "Developers"
+        }
+    ],
+	"require": {
+		"php": ">=5.3.0"
+	}
+}
