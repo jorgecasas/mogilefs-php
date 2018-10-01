@@ -14,7 +14,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-* **More info**: ITERNOVA [http://www.iternova.net]
+* **More info**: ITERNOVA [https://www.iternova.net]
 * **Based on**: https://github.com/ash2k/mogilefs-php-client-improved
 
 
@@ -51,7 +51,7 @@ print_r( $array_devices );
 
 ### Composer.json
 
-In order to use composer (and packagist.org), complete your composer.json file with:
+In order to use composer (and [packagist.org](https://packagist.org)), complete your composer.json file with:
 
 ```js
 {
