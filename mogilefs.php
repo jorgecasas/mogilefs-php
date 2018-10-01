@@ -21,8 +21,8 @@
  * Class MogileFS for accessing the Mogile File System, 
  * based on MogileFS PHP Client Improved (https://github.com/ash2k)
  * 
- * @author ITERNOVA [http://www.iternova.net]
- * @version 1.0.0 - 20140315
+ * @author ITERNOVA [https://www.iternova.net]
+ * @version 1.0.1 - 20180801
  * @see https://github.com/ash2k/mogilefs-php-client-improved
  */
 class MogileFS {
@@ -57,6 +57,7 @@ class MogileFS {
 
 	/**
 	 * Construct an instance.
+	 *
 	 * @param string $domain Domain
 	 * @param string $class Class
 	 * @param mixed $trackers Array of tracker URLs or a single tracker URL string
@@ -67,14 +68,15 @@ class MogileFS {
 		$this->set_trackers( $trackers );
 		$this->set_connect_timeout( 3.0 );
 		$this->set_tracker_timeout( 3.0 );
-		$this->set_put_timeout( 10.0 );
-		$this->set_get_timeout( 10.0 );
+		$this->set_put_timeout( 8.0 );
+		$this->set_get_timeout( 8.0 );
 		$this->set_debug( false );
 
 	}
 
 	/**
 	 * Get debug status.
+	 *
 	 * @return bool Debug status
 	 */
 	public function get_debug() {
@@ -84,6 +86,7 @@ class MogileFS {
 
 	/**
 	 * Set debug status.
+	 *
 	 * @param bool $debug Debug status
 	 */
 	public function set_debug( $debug ) {
@@ -95,13 +98,14 @@ class MogileFS {
 	 *
 	 * @return float Tracker/storage connect timeout in seconds
 	 */
-	public function get_connect_timeout() {
+	public function get_connect_timeout() : float {
 		return $this->_connectTimeout;
 
 	}
 
 	/**
 	 * Set tracker/storage connect timeout
+	 *
 	 * @param float $timeout Tracker/storage connect timeout in seconds
 	 */
 	public function set_connect_timeout( $timeout ) {
@@ -115,6 +119,7 @@ class MogileFS {
 
 	/**
 	 * Get tracker timeout.
+	 *
 	 * @return float Tracker timeout in seconds
 	 */
 	public function get_tracker_timeout() {
@@ -124,6 +129,7 @@ class MogileFS {
 
 	/**
 	 * Set tracker timeout.
+	 *
 	 * @param float $timeout Tracker timeout in seconds
 	 */
 	public function set_tracker_timeout( $timeout ) {
@@ -137,14 +143,16 @@ class MogileFS {
 
 	/**
 	 * Get PUT timeout.
+	 *
 	 * @return float PUT timeout in seconds
 	 */
-	public function get_put_timeout() {
-		return $this->_putTimeout;
+	public function get_put_timeout() : float {
+		return (float) $this->_putTimeout;
 	}
 
 	/**
 	 * Set PUT timeout.
+	 *
 	 * @param float $timeout PUT timeout in seconds
 	 */
 	public function set_put_timeout( $timeout ) {
@@ -158,15 +166,17 @@ class MogileFS {
 
 	/**
 	 * Get GET timeout.
+	 *
 	 * @return float GET timeout in seconds
 	 */
-	public function get_get_timeout() {
-		return $this->_getTimeout;
+	public function get_get_timeout() : float {
+		return (float) $this->_getTimeout;
 
 	}
 
 	/**
 	 * Set GET timeout.
+	 *
 	 * @param float $timeout GET timeout in seconds
 	 */
 	public function set_get_timeout( $timeout ) {
@@ -180,15 +190,17 @@ class MogileFS {
 
 	/**
 	 * Get list of trackers.
+	 *
 	 * @return array Array of tracker URLs
 	 */
-	public function get_trackers() {
+	public function get_trackers() : array {
 		return $this->_trackers;
 
 	}
 
 	/**
 	 * Set trackers.
+	 *
 	 * @param mixed $trackers Array of tracker URLs or a single tracker URL string
 	 */
 	public function set_trackers( $trackers ) {
@@ -204,14 +216,16 @@ class MogileFS {
 
 	/**
 	 * Get domain
+	 *
 	 * @return string Domain
 	 */
-	public function get_domain() {
-		return $this->_domain;
+	public function get_domain() : string {
+		return (string) $this->_domain;
 	}
 
 	/**
 	 * Set domain.
+	 *
 	 * @param string $domain Domain
 	 */
 	public function set_domain( $domain ) {
@@ -225,15 +239,17 @@ class MogileFS {
 
 	/**
 	 * Get class.
+	 *
 	 * @return string Class
 	 */
-	public function get_class() {
-		return $this->_class;
+	public function get_class() : string {
+		return (string) $this->_class;
 
 	}
 
 	/**
 	 * Set class.
+	 *
 	 * @param string $class Class
 	 */
 	public function set_class( $class ) {
@@ -249,9 +265,10 @@ class MogileFS {
 	 * Get information about the last GET/PUT transfer from cURL.
 	 * Information is provided by curl_getinfo(). Returns null if no information
 	 * is available.
+	 *
 	 * @return array Information about the last transfer
 	 */
-	public function get_curl_info() {
+	public function get_curl_info() : array {
 		return $this->_curlInfo;
 
 	}
@@ -260,10 +277,11 @@ class MogileFS {
 	 * Get a clear text error message for the last GET/PUT transfer from cURL.
 	 * Text error message is provided by curl_error(). Returns null if no
 	 * message is available.
+	 *
 	 * @return string Text error message
 	 */
-	public function get_curl_error() {
-		return $this->_curlError;
+	public function get_curl_error() : string {
+		return (string) $this->_curlError;
 
 	}
 
@@ -271,15 +289,17 @@ class MogileFS {
 	 * Get error number for the last GET/PUT transfer from cURL.
 	 * Error number is provided by curl_errno(). Returns 0 if no error number
 	 * is available.
+
 	 * @return int Error number
 	 */
-	public function get_curl_errno() {
-		return $this->_curlErrno;
+	public function get_curl_errno() : int {
+		return (int) $this->_curlErrno;
 
 	}
 
 	/**
 	 * Scans through the list of trackers and tries to connect one.
+	 *
 	 * @return resource Connected socket
 	 */
 	protected function get_connection() {
@@ -307,11 +327,13 @@ class MogileFS {
 
 	/**
 	 * Send a request to tracker and parse the result
+	 *
 	 * @param string $cmd Protocol command
 	 * @param array $args Optional. Arguments
+	 *
 	 * @return array Command's result
 	 */
-	protected function do_request( $cmd, Array $args = array( ) ) {
+	protected function do_request( $cmd, array $args = array( ) ) : array {
 		$args[ 'domain' ] = $this->_domain;
 		$args[ 'class' ] = $this->_class;
 		$params = '';
@@ -365,9 +387,10 @@ class MogileFS {
 
 	/**
 	 * Get a list of domains.
+	 *
 	 * @return array Array of domains
 	 */
-	public function get_domains() {
+	public function get_domains() : array {
 		$this->_curlInfo = null;
 		$this->_curlError = null;
 		$this->_curlErrno = 0;
@@ -389,10 +412,11 @@ class MogileFS {
 
 	/**
 	 * Check if a key exists.
+	 *
 	 * @param string $key Key
 	 * @return bool True if key exists, false otherwise
 	 */
-	public function exists( $key ) {
+	public function exists( $key ) : bool {
 		try {
 			// Get 1 path maximum without verification
 			$this->get_paths( $key, 1, true );
@@ -407,13 +431,14 @@ class MogileFS {
 
 	/**
 	 * Get an array of paths (URLs) of file's replicas.
+	 *
 	 * @param string $key Key
 	 * @param int $pathcount Optional. Maximum number of paths to get
 	 * @param bool $noverify Optional. Should tracker check each path for availability?
 	 *
 	 * @return array Array of paths
 	 */
-	public function get_paths( $key, $pathcount = null, $noverify = false ) {
+	public function get_paths( $key, $pathcount = null, $noverify = false ) : array {
 		$this->_curlInfo = null;
 		$this->_curlError = null;
 		$this->_curlErrno = 0;
@@ -432,6 +457,7 @@ class MogileFS {
 
 	/**
 	 * Delete a file from MogileFS.
+	 *
 	 * @param string $key Key
 	 */
 	public function delete( $key ) {
@@ -448,6 +474,7 @@ class MogileFS {
 
 	/**
 	 * Rename a file.
+	 *
 	 * @param string $from Current key
 	 * @param string $to New key
 	 */
@@ -469,6 +496,7 @@ class MogileFS {
 
 	/**
 	 * Get list of keys.
+	 *
 	 * @param string $prefix Optional. Key prefix
 	 * @param string $lastKey Optional. Last key
 	 * @param int $limit Optional. Maximum number of keys to return
@@ -479,13 +507,17 @@ class MogileFS {
 		$this->_curlError = null;
 		$this->_curlErrno = 0;
 		try {
-			return $this->do_request( self::CMD_LIST_KEYS, array(
-						'prefix' => $prefix,
-						'after' => $lastKey,
-						'limit' => $limit
-			) );
+			return $this->do_request( self::CMD_LIST_KEYS, 
+				array(
+					'prefix' => $prefix,
+					'after' => $lastKey,
+					'limit' => $limit
+				) 
+			);
 		} catch ( Exception $e ) {
-			if ( $e->getCode() == self::ERR_NONE_MATCH ) return array( );
+			if ( $e->getCode() == self::ERR_NONE_MATCH ) {
+				return array();
+			}
 			throw $e;
 		}
 
@@ -493,10 +525,11 @@ class MogileFS {
 
 	/**
 	 * Get a file from storage and return it as a string.
+	 *
 	 * @param string $key Key
 	 * @return string File contents
 	 */
-	public function get( $key ) {
+	public function get( $key ) : string {
 		$this->_curlInfo = null;
 		$this->_curlError = null;
 		$this->_curlErrno = 0;
@@ -542,9 +575,10 @@ class MogileFS {
 
 	/**
 	 * Get a file from storage and send it directly to stdout by way of fpassthru().
+	 *
 	 * @param string $key Key
 	 */
-	public function get_passthru( $key ) {
+	public function get_passthru( $key ) : string {
 		$this->_curlInfo = null;
 		$this->_curlError = null;
 		$this->_curlErrno = 0;
@@ -575,6 +609,7 @@ class MogileFS {
 
 	/**
 	 * Save a resource to the MogileFS.
+	 *
 	 * @param string $key Key
 	 * @param resource $fh File handle
 	 * @param int $length File length
@@ -662,6 +697,7 @@ class MogileFS {
 
 	/**
 	 * Save file to the MogileFS.
+	 *
 	 * @param string $key Key
 	 * @param string $filename File name
 	 */
@@ -689,9 +725,10 @@ class MogileFS {
 
 	/**
 	 * Close connection to tracker.
+	 *
 	 * @return boolean Operation result
 	 */
-	public function close() {
+	public function close() : bool {
 		if ( $this->_socket ) {
 			fclose( $this->_socket );
 			$this->_socket = null;

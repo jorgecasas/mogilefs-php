@@ -8,11 +8,11 @@
         {
             "name": "ITERNOVA",
             "email": "soportetecnico@iternova.net",
-            "homepage": "http://www.iternova.net",
+            "homepage": "https://www.iternova.net",
             "role": "Developers"
         }
     ],
 	"require": {
-		"php": ">=5.3.0"
+		"php": ">=5.3.6"
 	}
 }
