@@ -3,7 +3,7 @@
 	"description": "A simple MogileFS PHP client",
 	"keywords": ["filesystems", "mogilefs", "php"],
     "homepage": "https://github.com/jorgecasas/mogilefs-php",
-	"license": "GPLv3",
+	"license": "GPL-3.0-or-later",
 	"authors": [
         {
             "name": "ITERNOVA",
@@ -13,6 +13,6 @@
         }
     ],
 	"require": {
-		"php": ">=5.3.6"
+		"php": ">5.3"
 	}
 }
